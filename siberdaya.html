@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIBERDAYA - Impact Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Top Navy Header -->
+    <header class="bg-[#0b192c] text-white px-6 py-4 flex items-center justify-between shadow-md">
+        <div class="flex items-center space-x-3">
+            <span class="text-xl font-extrabold tracking-wider text-teal-400">SIBERDAYA</span>
+            <span class="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300 border border-slate-700">Impact Dashboard</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="hidden sm:flex items-center space-x-2 text-xs text-slate-300">
+                <span>Progress 72%</span>
+                <div class="w-24 bg-slate-700 rounded-full h-2">
+                    <div class="bg-teal-400 h-2 rounded-full" style="width: 72%"></div>
+                </div>
+            </div>
+            <div class="w-9 h-9 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-sm shadow">
+                SNS
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex flex-col md:flex-row">
+        <!-- Left Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-[#0b192c]/95 md:min-h-[calc(100vh-73px)] p-4 text-slate-300 space-y-1 border-t md:border-t-0 md:border-r border-slate-800">
+            <p class="px-3 pb-2 text-[10px] uppercase font-bold text-slate-500 tracking-wider">Menu Utama</p>
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-white/10 text-white transition">
+                <i class="fa-solid fa-house w-4"></i><span>Dashboard</span>
+            </button>
+            <button onclick="switchTab('skillmap')" id="nav-skillmap" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium hover:bg-white/5 hover:text-white transition">
+                <i class="fa-solid fa-compass w-4"></i><span>Skill Map</span>
+            </button>
+            <button onclick="switchTab('learning')" id="nav-learning" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium hover:bg-white/5 hover:text-white transition">
+                <i class="fa-solid fa-book-open w-4"></i><span>Learning Path</span>
+            </button>
+            <button onclick="switchTab('challenge')" id="nav-challenge" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium hover:bg-white/5 hover:text-white transition">
+                <i class="fa-solid fa-fire w-4"></i><span>Impact Challenge</span>
+            </button>
+            <button onclick="switchTab('portfolio')" id="nav-portfolio" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium hover:bg-white/5 hover:text-white transition">
+                <i class="fa-solid fa-award w-4"></i><span>Portfolio</span>
+            </button>
+            <button onclick="switchTab('opportunities')" id="nav-opportunities" class="sidebar-btn w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-medium hover:bg-white/5 hover:text-white transition">
+                <i class="fa-solid fa-link w-4"></i><span>Opportunities</span>
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+
+            <!-- TAB 1: DASHBOARD UTAMA (Sesuai Visual Prototype) -->
+            <div id="tab-dashboard" class="tab-content active space-y-8">
+                
+                <!-- Journey Section -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-extrabold text-slate-900">Your journey</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">From learning to verified impact</p>
+                    </div>
+
+                    <!-- Journey Step Tracker 1 to 6 -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 items-center relative py-4">
+                        <div onclick="switchTab('skillmap')" class="cursor-pointer flex flex-col items-center bg-blue-600 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-blue-600 font-bold flex items-center justify-center text-xs mb-1">1</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">KNOW</span>
+                        </div>
+                        <div onclick="switchTab('learning')" class="cursor-pointer flex flex-col items-center bg-teal-500 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-teal-600 font-bold flex items-center justify-center text-xs mb-1">2</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">LEARN</span>
+                        </div>
+                        <div onclick="switchTab('challenge')" class="cursor-pointer flex flex-col items-center bg-amber-500 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-amber-600 font-bold flex items-center justify-center text-xs mb-1">3</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">CREATE</span>
+                        </div>
+                        <div onclick="showNotification('Tahap Mentor', 'Sesi pendampingan bersama praktisi industri dan akademisi.')" class="cursor-pointer flex flex-col items-center bg-emerald-600 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-emerald-600 font-bold flex items-center justify-center text-xs mb-1">4</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">MENTOR</span>
+                        </div>
+                        <div onclick="switchTab('portfolio')" class="cursor-pointer flex flex-col items-center bg-blue-700 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-blue-700 font-bold flex items-center justify-center text-xs mb-1">5</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">PORTFOLIO</span>
+                        </div>
+                        <div onclick="switchTab('opportunities')" class="cursor-pointer flex flex-col items-center bg-amber-600 text-white p-3 rounded-xl shadow-sm text-center">
+                            <span class="w-8 h-8 rounded-full bg-white text-amber-600 font-bold flex items-center justify-center text-xs mb-1">6</span>
+                            <span class="text-xs font-bold uppercase tracking-wide">CONNECT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Three Bottom Cards Matching Prototype -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: Skill Match -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <h3 class="font-extrabold text-slate-900 text-base mb-4">Skill Match</h3>
+                            <div class="space-y-3 mb-6">
+                                <div>
+                                    <div class="flex justify-between text-xs font-semibold mb-1">
+                                        <span class="text-slate-700">Design</span>
+                                        <span class="text-teal-700">86%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-2">
+                                        <div class="bg-teal-600 h-2 rounded-full" style="width: 86%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-semibold mb-1">
+                                        <span class="text-slate-700">Communication</span>
+                                        <span class="text-teal-700">81%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-2">
+                                        <div class="bg-teal-600 h-2 rounded-full" style="width: 81%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs font-semibold mb-1">
+                                        <span class="text-slate-700">Digital Marketing</span>
+                                        <span class="text-teal-700">74%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 rounded-full h-2">
+                                        <div class="bg-teal-600 h-2 rounded-full" style="width: 74%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-3">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-slate-100 pt-3">
+                                <span>AI recommendation + human validation</span>
+                                <button onclick="switchTab('skillmap')" class="text-teal-600 font-semibold hover:underline">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Impact Challenge -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <h3 class="font-extrabold text-slate-900 text-base mb-4">Impact Challenge</h3>
+                            <div class="space-y-3 mb-6">
+                                <h4 class="font-bold text-slate-800 text-sm">UMKM Digital Growth</h4>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-2 text-xs text-slate-600">
+                                    <div class="flex justify-between items-center">
+                                        <span>Mentor Review</span>
+                                        <span class="font-semibold text-teal-700 bg-teal-50 px-2 py-0.5 rounded">Disetujui</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Evidence Tasks</span>
+                                        <span class="font-semibold text-slate-800">8/10 tasks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-3">
+                                <div class="bg-amber-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-slate-100 pt-3">
+                                <span>AI recommendation + human validation</span>
+                                <button onclick="switchTab('challenge')" class="text-teal-600 font-semibold hover:underline">Proyek</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Impact Portfolio -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <h3 class="font-extrabold text-slate-900 text-base mb-4">Impact Portfolio</h3>
+                            <div class="space-y-2.5 mb-6 text-xs text-slate-600">
+                                <div class="flex items-center space-x-2 font-bold text-emerald-600">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span>3 projects verified</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-slate-700">
+                                    <i class="fa-solid fa-circle text-[6px] text-slate-400"></i>
+                                    <span>1 community impact</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-slate-700">
+                                    <i class="fa-solid fa-circle text-[6px] text-slate-400"></i>
+                                    <span>2 opportunities matched</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 mb-3">
+                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px] text-slate-500 border-t border-slate-100 pt-3">
+                                <span>AI recommendation + human validation</span>
+                                <button onclick="switchTab('portfolio')" class="text-teal-600 font-semibold hover:underline">Buka</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TAB 2: SKILL MAP -->
+            <div id="tab-skillmap" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <span class="text-teal-600 text-xs font-bold uppercase">Tahap 1: KNOW</span>
+                            <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Personal Skill Map & Asesmen Potensi</h2>
+                            <p class="text-slate-600 text-sm mt-1">Pemetaan minat dan keterampilan digital untuk rekomendasi jalur karier terbaik.</p>
+                        </div>
+                        <button onclick="showNotification('Asesmen AI', 'Personal Skill Map berhasil diperbarui!')" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
+                            Perbarui Asesmen AI
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 text-sm mb-3">Digital Skills</h4>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>UI/UX Design</span><strong class="text-teal-700">86%</strong></div>
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>Content Strategy</span><strong class="text-teal-700">74%</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 text-sm mb-3">Human Skills</h4>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>Communication</span><strong class="text-teal-700">81%</strong></div>
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>Problem Solving</span><strong class="text-teal-700">85%</strong></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                            <h4 class="font-bold text-slate-900 text-sm mb-3">Impact Skills</h4>
+                            <div class="space-y-2 text-xs text-slate-600">
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>Social Innovation</span><strong class="text-teal-700">80%</strong></div>
+                                <div class="flex justify-between p-2 bg-white rounded-lg border"><span>Community Outreach</span><strong class="text-teal-700">88%</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: LEARNING PATH -->
+            <div id="tab-learning" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="mb-6">
+                        <span class="text-teal-600 text-xs font-bold uppercase">Tahap 2: LEARN</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Jalur Belajar Personal (Learning Pathway)</h2>
+                        <p class="text-slate-600 text-sm mt-1">Modul pembelajaran yang disesuaikan dengan kebutuhan peningkatan kompetensi.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Modul Aktif</span>
+                                <h4 class="font-bold text-slate-900 text-base mt-1">Advanced Content Marketing & Digital Branding untuk UMKM</h4>
+                                <p class="text-xs text-slate-600 mt-1">Menyusun strategi konten dan kalender pemasaran.</p>
+                            </div>
+                            <button onclick="showNotification('Modul Belajar', 'Anda melanjutkan ke Sesi Analisis Engagement.')" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition whitespace-nowrap">
+                                Lanjutkan Belajar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: IMPACT CHALLENGE -->
+            <div id="tab-challenge" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="mb-6">
+                        <span class="text-teal-600 text-xs font-bold uppercase">Tahap 3: CREATE</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Direktori Impact Challenge</h2>
+                        <p class="text-slate-600 text-sm mt-1">Selesaikan tantangan nyata dari UMKM dan instansi pemerintah.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">UMKM</span>
+                                <h3 class="font-bold text-slate-900 text-base mt-3 mb-2">Optimasi Pemasaran Digital Kopi Nusantara</h3>
+                                <p class="text-xs text-slate-600 leading-relaxed mb-4">Membuat minimal 10 konten digital untuk UMKM lokal.</p>
+                            </div>
+                            <button onclick="showNotification('Challenge Diambil', 'Berhasil mendaftar pada tantangan Kopi Nusantara.')" class="w-full bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold py-2.5 rounded-xl transition">
+                                Ambil Tantangan Ini
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: PORTFOLIO -->
+            <div id="tab-portfolio" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-slate-200 pb-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-bold text-lg shadow">SNS</div>
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">Sherly Nur Sausanindra</h2>
+                                <p class="text-xs text-slate-500 mt-1">Telkom University Jakarta • Impact Score: <strong class="text-teal-700">485 pts</strong></p>
+                            </div>
+                        </div>
+                        <button onclick="showNotification('Unduh Portofolio', 'Link PDF SIBERDAYA Impact Portfolio berhasil disalin.')" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
+                            Unduh Impact Portfolio (PDF)
+                        </button>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 mb-4">Proyek Tervalidasi</h3>
+                    <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="font-bold text-slate-900 text-sm">Transformasi Digital Kopi Nusantara</h4>
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">Validasi Mentor: 98/100</span>
+                        </div>
+                        <p class="text-xs text-slate-600">Menyelesaikan strategi konten pemasaran digital dengan kenaikan jangkauan organik.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: OPPORTUNITIES -->
+            <div id="tab-opportunities" class="tab-content space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div class="mb-6">
+                        <span class="text-teal-600 text-xs font-bold uppercase">Tahap 6: CONNECT</span>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Peluang Karier & Inkubasi Bisnis</h2>
+                        <p class="text-slate-600 text-sm mt-1">Pencocokan berbasis portofolio (*skills-based matching*).</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded">Magang Industri</span>
+                                <h4 class="font-bold text-slate-900 text-base mt-2">Digital Content Specialist - PT Media Nusantara</h4>
+                                <p class="text-xs text-slate-600 mt-1">Kecocokan portofolio: 94%.</p>
+                            </div>
+                            <button onclick="showNotification('Lamaran Terkirim', 'Impact Portfolio terkirim ke perusahaan.')" class="mt-4 bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold py-2.5 rounded-xl transition">
+                                Kirim Portfolio & Lamar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal Notifikasi Interaktif -->
+    <div id="customModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-xl border border-slate-200">
+            <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-lg font-bold">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <h3 id="modalTitle" class="text-lg font-extrabold text-slate-900 mb-2">Notifikasi</h3>
+            <p id="modalMessage" class="text-xs text-slate-600 mb-6">Pesan informasi sistem.</p>
+            <button onclick="closeModal()" class="w-full bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold py-2.5 rounded-xl transition shadow-sm">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sidebar-btn').forEach(el => el.classList.remove('bg-white/10', 'font-bold'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if(activeBtn) activeBtn.classList.add('bg-white/10', 'font-bold');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showNotification(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
